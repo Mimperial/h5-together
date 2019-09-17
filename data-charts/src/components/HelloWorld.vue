@@ -223,12 +223,17 @@ export default {
           case '研究生和留学生数':
             _this.yjsNums = [];
             d3.csv("./研究生和留学生数.csv", function(data) {
-              _this.yjsNums = _this.yjsNums.push(data);
+              //_this.yjsNums.push(data);
+              return data;
               if(_this.yjsNums.length > 0){
                 _this.charTitle = '研究生和留学生数'
               }
+            }).then(function (data) {
+              console.log(data)
+              _this.yjsNums = data
               _this.getChart();
             });
+
             break;
       
         default:
@@ -248,10 +253,17 @@ export default {
       //           _this.item5 = _this.yjsNums[4].指标
       //           _this.item6 = _this.yjsNums[5].指标
       console.log(_this.yjsNums)
-      for(var i = 0; i < _this.yjsNums.length; i++){
-                  console.log(_this.yjsNums[0].指标)
-                  // console.log(_this.yjsNums[1].指标)
-                }
+      _this.item1 = _this.yjsNums[0].指标
+      _this.item2 = _this.yjsNums[1].指标
+      _this.item3 = _this.yjsNums[2].指标
+      _this.item4 = _this.yjsNums[3].指标
+      _this.item5 = _this.yjsNums[4].指标
+      _this.item6 = _this.yjsNums[5].指标
+      console.log(_this.item1);
+      // for(var i = 0; i < _this.yjsNums.length; i++){
+      //             console.log(_this.yjsNums[0].指标)
+      //             console.log(_this.yjsNums[1].指标)
+      //   }
       var dataChart = this.$echarts.init(document.getElementById("data-chart"));
       let gmzsrArr = _this.gmzsrArr;
       let gnsczzArr = _this.gnsczzArr
