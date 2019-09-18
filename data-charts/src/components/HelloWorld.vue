@@ -35,31 +35,31 @@ export default {
   // },
   data() {
     return {
-      value:'',
-      charTitle:'',
+      value: "",
+      charTitle: "",
       titleTop1: "",
       arrGgtsg: [],
       wszfy: [],
       yjsNums: [],
-      options:[
+      options: [
         {
-              value: '选项0',
-              label: '国内生产总值'
-            },
+          value: "选项0",
+          label: "国内生产总值"
+        },
         {
-              value: '选项1',
-              label: '卫生总费用'
-            },
+          value: "选项1",
+          label: "卫生总费用"
+        },
         {
-              value: '选项2',
-              label: '公共图书馆'
-            },
+          value: "选项2",
+          label: "公共图书馆"
+        },
         {
-              value: '选项3',
-              label: '研究生和留学生数'
-            },
+          value: "选项3",
+          label: "研究生和留学生数"
+        }
       ],
-      gnsczzArr:[
+      gnsczzArr: [
         896915.6,
         820099.5,
         737074,
@@ -76,7 +76,7 @@ export default {
         185998.9,
         161415.4
       ].reverse(),
-      gmzsrArr:[
+      gmzsrArr: [
         900309.5,
         820754.3,
         740060.8,
@@ -93,7 +93,7 @@ export default {
         187318.9,
         161840.2
       ].reverse(),
-      firArr:[
+      firArr: [
         64734,
         62099.5,
         60139.2,
@@ -110,7 +110,7 @@ export default {
         21806.7,
         20904.3
       ].reverse(),
-      secArr:[
+      secArr: [
         366000.9,
         332742.7,
         296547.7,
@@ -127,7 +127,7 @@ export default {
         88084.4,
         74286.9
       ].reverse(),
-      thrArr:[
+      thrArr: [
         469574.6,
         425912.1,
         383373.9,
@@ -144,7 +144,7 @@ export default {
         77427.8,
         66648.9
       ].reverse(),
-      eveArr:[
+      eveArr: [
         64644,
         59201,
         53680,
@@ -162,28 +162,28 @@ export default {
         12487
       ],
       xAxisValue: [
-            "2018",
-            "2017",
-            "2016",
-            "2015",
-            "2014",
-            "2013",
-            "2012",
-            "2011",
-            "2010",
-            "2009",
-            "2008",
-            "2007",
-            "2006",
-            "2005",
-            "2004"
-          ].reverse(),
-      item1:'国民总收入（亿元）',
-      item2:'国内生产总值（亿元）',
-      item3:'第一产业增加值（亿元）',
-      item4:'第二产业增加值（亿元）',
-      item5:'第三产业增加值（亿元）',
-      item6:'人均国内生产总值（亿元）',
+        "2018",
+        "2017",
+        "2016",
+        "2015",
+        "2014",
+        "2013",
+        "2012",
+        "2011",
+        "2010",
+        "2009",
+        "2008",
+        "2007",
+        "2006",
+        "2005",
+        "2004"
+      ].reverse(),
+      item1: "国民总收入（亿元）",
+      item2: "国内生产总值（亿元）",
+      item3: "第一产业增加值（亿元）",
+      item4: "第二产业增加值（亿元）",
+      item5: "第三产业增加值（亿元）",
+      item6: "人均国内生产总值（亿元）"
     };
   },
   mounted() {
@@ -191,74 +191,97 @@ export default {
   },
   methods: {
     optionChange(value) {
-                this.value = value
-                this.callbackCsvFile()
-            },
-    callbackCsvFile(){
-      let _this = this
+      let _this = this;
+      _this.yjsNums = [];
       // http://h5.ubi-creation.com/csvfile"
-      let key = _this.value
+      let key = value;
       switch (key) {
-        case '公共图书馆':
-          _this.arrGgtsg = [];
+        case "国内生产总值":
+          d3.csv("./国内生产总值.csv", function(data) {
+            return data;
+          }).then(function(data) {
+            _this.yjsNums = data
+            _this.charTitle = "国内生产总值";
+            _this.getChart();
+          });
+          
+          break;
+        case "公共图书馆":
           d3.csv("./公共图书馆.csv", function(data) {
-            _this.arrGgtsg.push(data);
-            if(_this.arrGgtsg.length > 0){
-              _this.charTitle = '公共图书馆'
-              _this.getChart();
-            }
+            return data;
+          }).then(function(data) {
+            _this.yjsNums = data
+            _this.charTitle = "公共图书馆";
+            _this.getChart();
+          });
+          
+          break;
+        case "卫生总费用":
+          d3.csv("./卫生总费用.csv", function(data) {
+            return data;
+          }).then(function(data) {
+            _this.yjsNums = data
+            _this.charTitle = "卫生总费用";
+            _this.getChart();
           });
           break;
-          case '卫生总费用':
-            _this.wszfy = [];
-            d3.csv("./卫生总费用.csv", function(data) {
-              _this.wszfy.push(data);
-              if(_this.wszfy.length > 0){
-                _this.charTitle = '卫生总费用'
-                _this.getChart();
-              }
-            });
-            break;
-      
-          case '研究生和留学生数':
-            _this.yjsNums = [];
-            d3.csv("./研究生和留学生数.csv", function(data) {
-              _this.yjsNums = _this.yjsNums.push(data);
-              if(_this.yjsNums.length > 0){
-                _this.charTitle = '研究生和留学生数'
-              }
-              _this.getChart();
-            });
-            break;
-      
-        default:
+        case "研究生和留学生数":
+          
+          d3.csv("./研究生和留学生数.csv", function(data) {
+            return data;
+          }).then(function(data) {
+            _this.yjsNums = data
+            _this.charTitle = "研究生和留学生数";
+            _this.getChart();
+          });
           break;
       }
-      
-      // 数据来源：国家统计局,,,,,,,,,,,,,,,,,,,
-      // 数据库：年度数据,,,,,,,,,,,,,,,,,,,
-      // 时间：最近20年,,,,,,,,,,,,,,,,,,,
-      
     },
     getChart() {
       let _this = this;
-      // _this.item1 = _this.yjsNums[0].指标
-      //           _this.item3 = _this.yjsNums[2].指标
-      //           _this.item4 = _this.yjsNums[3].指标
-      //           _this.item5 = _this.yjsNums[4].指标
-      //           _this.item6 = _this.yjsNums[5].指标
-      console.log(_this.yjsNums)
-      for(var i = 0; i < _this.yjsNums.length; i++){
-                  console.log(_this.yjsNums[0].指标)
-                  // console.log(_this.yjsNums[1].指标)
-                }
+      _this.item0 = _this.yjsNums[0].指标;
+      _this.item1 = _this.yjsNums[1].指标;
+      _this.item2 = _this.yjsNums[2].指标;
+      _this.item3 = _this.yjsNums[3].指标;
+      _this.item4 = _this.yjsNums[4].指标;
+      _this.item5 = _this.yjsNums[5].指标;
+      let itemValue0 = _this.yjsNums[0]
+      let itemValue1 = _this.yjsNums[1]
+      let itemValue2 = _this.yjsNums[2]
+      let itemValue3 = _this.yjsNums[3]
+      let itemValue4 = _this.yjsNums[4]
+      let itemValue5 = _this.yjsNums[5]
+      let oneOfLine0 = []
+      let oneOfLine1 = []
+      let oneOfLine2 = []
+      let oneOfLine3 = []
+      let oneOfLine4 = []
+      let oneOfLine5 = []
+      for(var i in itemValue0){
+        oneOfLine0.push(itemValue0[i])
+      }
+      for(var i in itemValue1){
+        oneOfLine1.push(itemValue1[i])
+      }
+      for(var i in itemValue2){
+        oneOfLine2.push(itemValue1[i])
+      }
+      for(var i in itemValue3){
+        oneOfLine3.push(itemValue1[i])
+      }
+      for(var i in itemValue4){
+        oneOfLine4.push(itemValue1[i])
+      }
+      for(var i in itemValue5){
+        oneOfLine5.push(itemValue1[i])
+      }
       var dataChart = this.$echarts.init(document.getElementById("data-chart"));
-      let gmzsrArr = _this.gmzsrArr;
-      let gnsczzArr = _this.gnsczzArr
-      let firArr = _this.firArr;
-      let secArr = _this.secArr;
-      let thrArr = _this.thrArr;
-      let eveArr = _this.eveArr;
+      let gmzsrArr = oneOfLine0.reverse();
+      let gnsczzArr = oneOfLine1.reverse();
+      let firArr = oneOfLine2.reverse();
+      let secArr = oneOfLine3.reverse();
+      let thrArr = oneOfLine4.reverse();
+      let eveArr = oneOfLine5.reverse();
       let option = (option = {
         title: {
           text: "",
@@ -272,6 +295,13 @@ export default {
         },
         legend: {
           data: [
+            {
+              name: _this.item0,
+              icon: "circle",
+              textStyle: {
+                color: "#fff" // 图例文字颜色
+              }
+            },
             {
               name: _this.item1,
               icon: "circle",
@@ -302,13 +332,6 @@ export default {
             },
             {
               name: _this.item5,
-              icon: "circle",
-              textStyle: {
-                color: "#fff" // 图例文字颜色
-              }
-            },
-            {
-              name: _this.item6,
               icon: "circle",
               textStyle: {
                 color: "white" // 图例文字颜色
@@ -356,7 +379,7 @@ export default {
           x: 20,
           y: 50,
           right: 20,
-          top: 80,
+          top: 100,
           bottom: 10,
           containLabel: true
         },
@@ -412,8 +435,7 @@ export default {
         ]
       });
       dataChart.setOption(option);
-    },
-    
+    }
   }
 };
 </script>
