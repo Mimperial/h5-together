@@ -234,11 +234,13 @@ export default {
             _this.charTitle = "研究生和留学生数";
             _this.getChart();
           });
+
           break;
       }
     },
     getChart() {
       let _this = this;
+
       _this.item0 = _this.yjsNums[0].指标;
       _this.item1 = _this.yjsNums[1].指标;
       _this.item2 = _this.yjsNums[2].指标;
@@ -275,6 +277,7 @@ export default {
       for(var i in itemValue5){
         oneOfLine5.push(itemValue1[i])
       }
+
       var dataChart = this.$echarts.init(document.getElementById("data-chart"));
       let gmzsrArr = oneOfLine0.reverse();
       let gnsczzArr = oneOfLine1.reverse();
