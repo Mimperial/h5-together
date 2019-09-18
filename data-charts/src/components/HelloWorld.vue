@@ -17,8 +17,8 @@
         ></el-option>
       </el-select>
     </div>
-    <div id="data-chart" style="width:360px;height:550px;background:#4B515D;padding-top:10px"></div>
-    <!-- <div id="data-chart" style="width:365px;height:400px;background:#4B515D;padding-top:10px"></div> -->
+    <!-- <div id="data-chart" style="width:360px;height:550px;background:#4B515D;padding-top:10px"></div> -->
+    <div id="data-chart" style="width:365px;height:400px;background:#4B515D;padding-top:10px"></div>
     <div style="margin-top:0px;color:#fff">
       <h3>{{charTitle}}</h3>
     </div>
@@ -240,7 +240,7 @@ export default {
     },
     getChart() {
       let _this = this;
-
+      console.log(_this.yjsNums)
       _this.item0 = _this.yjsNums[0].指标;
       _this.item1 = _this.yjsNums[1].指标;
       _this.item2 = _this.yjsNums[2].指标;
