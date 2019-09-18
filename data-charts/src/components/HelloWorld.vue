@@ -187,7 +187,7 @@ export default {
     };
   },
   mounted() {
-    // this.callbackCsvFile();
+    this.optionChange('国内生产总值')
   },
   methods: {
     optionChange(value) {
