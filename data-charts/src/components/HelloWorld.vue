@@ -353,6 +353,21 @@ export default {
             magicType: { type: ["line", "bar"] },
             restore: {},
             saveAsImage: {}
+          },
+          top:70,
+          iconStyle:{
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [{
+                offset: 0, color: 'red' // 0% 处的颜色
+            }, {
+                offset: 1, color: 'blue' // 100% 处的颜色
+            }],
+            global: false, // 缺省为 false
+            borderColor:'white'
           }
         },
         xAxis: {
@@ -448,5 +463,8 @@ export default {
 .hello {
   width: 100%;
   background: #4B515D;
+}
+.input-back{
+  display:flex 
 }
 </style>
