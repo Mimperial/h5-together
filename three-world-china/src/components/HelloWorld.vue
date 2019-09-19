@@ -54,14 +54,14 @@ export default {
       let option = {
         backgroundColor: "#000",
         globe: {
-          baseTexture: "../asset/get/s/data-1491890179041-Hkj-elqpe.jpg",
-          heightTexture: "../asset/get/s/data-1491889019097-rJQYikcpl.jpg",
+          baseTexture: "./data-1491890179041-Hkj-elqpe.jpg",
+          heightTexture: "./data-1491889019097-rJQYikcpl.jpg",
 
           displacementScale: 0.1,
 
           shading: "lambert",
 
-          environment: "../asset/get/s/data-1491837999815-H1_44Qtal.jpg",
+          environment: "./data-1491837999815-H1_44Qtal.jpg",
 
           light: {
             ambient: {
