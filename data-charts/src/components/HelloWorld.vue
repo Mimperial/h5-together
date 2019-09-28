@@ -17,10 +17,10 @@
         ></el-option>
       </el-select>
     </div>
-    <!-- <div id="data-chart" style="width:360px;height:550px;background:#4B515D;padding-top:10px"></div> -->
-    <div id="data-chart" style="width:365px;height:400px;background:#4B515D;padding-top:10px"></div>
-    <div style="margin-top:0px;color:#fff">
-      <h3>{{charTitle}}</h3>
+    <div id="data-chart" style="width:360px;height:400px;background:#4B515D;padding-top:10px"></div>
+    <!-- <div id="data-chart" style="width:365px;height:400px;background:#4B515D;padding-top:10px"></div> -->
+    <div style="margin-top:0px;color:#fff; padding:10px 0" >
+      <h3 style="font-size:18px">{{charTitle}}</h3>
     </div>
   </div>
 </template>
@@ -356,16 +356,6 @@ export default {
           },
           top:70,
           iconStyle:{
-            type: 'linear',
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
-            colorStops: [{
-                offset: 0, color: 'red' // 0% 处的颜色
-            }, {
-                offset: 1, color: 'blue' // 100% 处的颜色
-            }],
             global: false, // 缺省为 false
             borderColor:'white'
           }
@@ -382,6 +372,7 @@ export default {
           }
         },
         yAxis: {
+          show: true,
           type: "value",
           axisLabel: {
             formatter: "{value}(万)"
@@ -394,16 +385,16 @@ export default {
           }
         },
         grid: {
-          x: 20,
-          y: 50,
-          right: 20,
-          top: 100,
+          left: '1%',
+          right: '2%',
+          top: 20,
           bottom: 10,
+          width:350,
           containLabel: true
         },
         series: [
           {
-            name: _this.item1,
+            name: _this.item0,
             type: "line",
             stack: "总量",
             // 显示数值
@@ -411,7 +402,7 @@ export default {
             data: gmzsrArr
           },
           {
-            name: _this.item2,
+            name: _this.item1,
             type: "line",
             stack: "总量",
             // 显示数值
@@ -419,7 +410,7 @@ export default {
             data: gnsczzArr
           },
           {
-            name: _this.item3,
+            name: _this.item2,
             type: "line",
             stack: "总量",
             // 显示数值
@@ -427,7 +418,7 @@ export default {
             data: firArr
           },
           {
-            name: _this.item4,
+            name: _this.item3,
             type: "line",
             stack: "总量",
             // 显示数值
@@ -435,7 +426,7 @@ export default {
             data: secArr
           },
           {
-            name: _this.item5,
+            name: _this.item4,
             type: "line",
             stack: "总量",
             // 显示数值
@@ -443,7 +434,7 @@ export default {
             data: thrArr
           },
           {
-            name: _this.item6,
+            name: _this.item5,
             type: "line",
             // 显示数值
             // itemStyle : { normal: {label : {show: true}}},

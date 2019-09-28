@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <!-- background:#4B515D; -->
-    <div id="threedWorld" style="width:800px;height:600px;padding-top:10px"></div>
+    <div id="threedWorld" style="width:370px;height:500px;padding-top:10px"></div>
   </div>
 </template>
 
@@ -23,8 +23,8 @@ export default {
       var myChart = this.$echarts.init(document.getElementById("threedWorld"));
       var canvas = document.createElement("canvas");
       var mapChart = this.$echarts.init(canvas, null, {
-        width: 2048,
-        height: 1024
+        width: 100,
+        height: 200
       });
 
       mapChart.setOption({

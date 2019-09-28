@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>货币转换器</h1>
+    <h1>汇率转换器</h1>
     <div class="selset-back">
       <el-select v-model="valueFormCode" filterable placeholder="源货币类型" size="mini">
         <el-option
@@ -29,6 +29,7 @@
     </div>
     <div class="after-money">
       <h1>{{ beforeMoney }}{{ valueFormCode }} = {{ afterMoney }}{{ valueToCode }}</h1>
+      <p style="color: rgb(211, 207, 207); text-align:right; padding-right:5px">数据仅供参考，交易时以银行柜台成交价为准</p>
     </div>
   </div>
 </template>

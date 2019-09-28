@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <div class="chart-title" >
+    <div class="chart-title">
       <div>
         <h3 style="font-size:18px">&nbsp;&nbsp;{{charTitle}}</h3>
       </div>
@@ -10,18 +10,20 @@
     </div>
     <div class="country-select">
       <ul class="select-opion">
-        <li ref='china' @click="geText($event)">中国</li>
-        <li ref='russia' @click="geText($event)">俄罗斯</li>
-        <li ref='england' @click="geText($event)">英国</li>
-        <li ref='french' @click="geText($event)">法国</li>
-        <li ref='american' @click="geText($event)">美国</li>
+        <li ref="china" @click="geText($event)">中国</li>
+        <li ref="russia" @click="geText($event)">俄罗斯</li>
+        <li ref="england" @click="geText($event)">英国</li>
+        <li ref="french" @click="geText($event)">法国</li>
+        <li ref="american" @click="geText($event)">美国</li>
       </ul>
     </div>
-    <div class="data-table" v-for="itemy in yjsNums3 " :key="itemy" :value="itemy">
-      <!-- <p>{{item0}}</p> -->
+     <!-- <div class="data-table" v-for="itemy in yjsNums3 " :key="itemy" :value="itemy">
       <div style="display:flex;flex-direction:row;justify-content:center">
-
-        <div class="data-part1" style="">
+        <div class="data-part1" style>
+          <p>
+            <span class="table-year">2007年</span>
+            <span class="table-value">{{itemy['2007']}}</span>
+          </p>
           <p>
             <span class="table-year">2008年</span>
             <span class="table-value">{{itemy['2008']}}</span>
@@ -34,12 +36,12 @@
             <span class="table-year">2010年</span>
             <span class="table-value">{{itemy['2010']}}</span>
           </p>
+        </div>
+        <div class="data-part1">
           <p>
             <span class="table-year">2011年</span>
             <span class="table-value">{{itemy['2011']}}</span>
           </p>
-        </div>
-        <div class="data-part1" >
           <p>
             <span class="table-year">2012年</span>
             <span class="table-value">{{itemy['2012']}}</span>
@@ -52,13 +54,12 @@
             <span class="table-year">2014年</span>
             <span class="table-value">{{itemy['2014']}}</span>
           </p>
+        </div>
+        <div class="data-part1">
           <p>
             <span class="table-year">2015年</span>
             <span class="table-value">{{itemy['2015']}}</span>
           </p>
-          </div>
-        <div class="data-part1" >
-          
           <p>
             <span class="table-year">2016年</span>
             <span class="table-value">{{itemy['2016']}}</span>
@@ -71,25 +72,15 @@
             <span class="table-year">2018年</span>
             <span class="table-value">{{itemy['2018']}}</span>
           </p>
-          <p>
-            <span class="table-year">2019年</span>
-            <span class="table-value">{{'待统计'}}</span>
-          </p>
         </div>
       </div>
-    </div>
-    <!-- <div style="padding-top:5px;">
-        <el-table :data="lineTableData" style="width: 100%">
-          <el-table-column prop="country" label="国家" align="center" width="100"></el-table-column>
-          <el-table-column prop="year" label="年份" align="center"></el-table-column>
-          <el-table-column prop="value" label="百分比" align="center"></el-table-column>
-        </el-table>
-    </div>-->
+    </div>  -->
   </div>
 </template>
 
 <script>
 import * as d3 from "d3";
+
 export default {
   name: "HelloWorld",
   // props: {
@@ -144,7 +135,7 @@ export default {
         "2011",
         "2010",
         "2009",
-        "2008",
+        "2008"
       ].reverse(),
       item1: "国民总收入（亿元）",
       item2: "国内生产总值（亿元）",
@@ -245,6 +236,7 @@ export default {
       let _this = this;
       let yjsNums3 = _this.yjsNums.map(function(ele){ 
               let obj={
+                '2007':Number(ele['2007']).toFixed(3),
                 '2008':Number(ele['2008']).toFixed(3),
                 '2009':Number(ele['2009']).toFixed(3),
                 '2010':Number(ele['2010']).toFixed(3),
@@ -404,21 +396,23 @@ export default {
 <style scoped lang="stylus">
 .hello {
   width: 100%;
-  background: rgba(10, 9, 26, 1)
+  background: rgba(10, 9, 26, 1);
 }
-.chart-title{
-  color:#fff; 
-   padding-top:10px;
-  
+
+.chart-title {
+  color: #fff;
+  padding-top: 10px;
 }
-.chart-title div{
-  width:260px;
+
+.chart-title div {
+  width: 260px;
   margin-top: 15px;
-  padding-top:15px;
-  padding-bottom:15px;
-  background:#4B515D;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: #4B515D;
   border-radius: 0 25px 25px 0;
 }
+
 .input-back {
   position: absolute;
   left: 50px;
@@ -431,57 +425,122 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 10px 0;
+  padding-bottom: 10px;
   border-bottom: 10px solid #cccccc8a;
 }
 
 .bar-chart {
   width: 360px;
   height: 400px;
-  padding-top: 10px;
-}
-.country-select{
-  margin-bottom:20px;
-  padding:20px 20px 0 20px;
-  border-bottom: 1px solid #ffffff4a;
-}
-.select-opion {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  text-align: center;
-  color: white;
 }
 
-.select-opion li {
-  font-size 16px
-  padding: 10px 15px;
-  
-}
-.data-table{
-  height:175px;color: rgba(255, 255, 255, 0.80);display:flex;flex-direction: column;
+@media (max-width: 375px) {
+  .country-select {
+    padding: 20px 20px 0 20px;
+    border-bottom: 1px solid #ffffff4a;
+  }
 
-}
-.data-part1{
-  display:flex;flex-direction: column;
-  border-right 5px solid #4B515D;
-}
-.data-part1:last-child{
-    border-right 0px solid #4B515D;
+  .select-opion {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
 
+  .select-opion li {
+    font-size: 16px;
+    padding: 10px 10px;
+  }
+
+  .data-table {
+    height: 175px;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    margin-top:20px
+  }
+
+  .data-part1 {
+    display: flex;
+    flex-direction: column;
+    border-right: 5px solid #4B515D;
+  }
+
+  .data-part1:last-child {
+    border-right: 0px solid #4B515D;
+  }
+
+  .data-part1 p {
+    border-bottom: 1px solid #cccccc8a;
+  }
+
+  .table-year {
+    display: inline-block;
+    border-right: 1px solid #ffffff4a;
+    padding: 13px 2px;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .table-value {
+    display: inline-block;
+    padding: 13px 1px;
+    background: rgba(255, 255, 255, 0.21);
+  }
 }
-.data-part1 p{
-  border-bottom:1px solid #cccccc8a
-}
-.table-year{
-  display:inline-block;
-  border-right 1px solid #ffffff4a
-  padding:13px 11px 
-  background:rgba(255, 255, 255, 0.15)
-}
-.table-value{
-  display:inline-block;
-  padding:13px 3px;
-  background:rgba(255, 255, 255, 0.21)
+
+@media (min-width: 375px) {
+  .country-select {
+    margin-bottom: 20px;
+    padding: 20px 20px 0 20px;
+    border-bottom: 1px solid #ffffff4a;
+  }
+
+  .select-opion {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+
+  .select-opion li {
+    font-size: 16px;
+    padding: 10px 11px;
+  }
+
+  .data-table {
+    height: 175px;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .data-part1 {
+    display: flex;
+    flex-direction: column;
+    border-right: 5px solid #4B515D;
+  }
+
+  .data-part1:last-child {
+    border-right: 0px solid #4B515D;
+  }
+
+  .data-part1 p {
+    border-bottom: 1px solid #cccccc8a;
+  }
+
+  .table-year {
+    display: inline-block;
+    border-right: 1px solid #ffffff4a;
+    padding: 13px 9px;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .table-value {
+    display: inline-block;
+    padding: 13px 3px;
+    background: rgba(255, 255, 255, 0.21);
+  }
 }
 </style>
