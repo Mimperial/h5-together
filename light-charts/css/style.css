@@ -1,5 +1,6 @@
 body {
-    background: #4B515D
+    background: #000;
+    margin: 0 auto;
 }
 
 .hello {
@@ -15,7 +16,7 @@ body {
 }
 
 .chart-title div {
-    width: 310px;
+    width: 260px;
     margin-top: 15px;
     padding: 15px 0 15px 15px;
     padding-bottom: 15px;
@@ -42,6 +43,15 @@ body {
 .bar-chart {
     width: 360px;
     height: 400px;
+}
+
+.table {
+    color: #ffffffed;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px
 }
 
 @media (max-width: 375px) {
@@ -81,13 +91,15 @@ body {
     .table-year {
         display: inline-block;
         border-right: 1px solid #ffffff4a;
-        padding: 13px 2px;
+        padding: 13px 1px;
         background: rgba(255, 255, 255, 0.15);
+        font-size: 13px
     }
     .table-value {
         display: inline-block;
         padding: 13px 1px;
         background: rgba(255, 255, 255, 0.21);
+        font-size: 13px
     }
 }
 
@@ -128,12 +140,12 @@ body {
     .table-year {
         display: inline-block;
         border-right: 1px solid #ffffff4a;
-        padding: 13px 9px;
+        padding: 13px 2px;
         background: rgba(255, 255, 255, 0.15);
     }
     .table-value {
         display: inline-block;
-        padding: 13px 3px;
+        padding: 13px 1px;
         background: rgba(255, 255, 255, 0.21);
     }
 }
