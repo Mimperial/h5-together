@@ -160,100 +160,110 @@ export default {
       let key = value;
       switch (key) {
         case "中国":
-          _this.$refs.china.style.color = 'orange';
+          _this.$refs.china.style.color = "orange";
           // _this.$refs.china.style.border = '1px solid orange';
-          _this.$refs.russia.style.color = 'white';
-          _this.$refs.england.style.color = 'white';
-          _this.$refs.french.style.color = 'white';
-          _this.$refs.american.style.color = 'white';
-          d3.csv("./中国城镇人口占总人口比例.csv", function(data) {
+          _this.$refs.russia.style.color = "white";
+          _this.$refs.england.style.color = "white";
+          _this.$refs.french.style.color = "white";
+          _this.$refs.american.style.color = "white";
+          d3.csv("./中国总储备（包括黄金，按现值美元计）.csv", function(data) {
             return data;
           }).then(function(data) {
             _this.yjsNums = data;
-            _this.charTitle = "中国城市人口占总人口比例";
+            _this.charTitle = "中国总储备（包括黄金按现值美元计）";
             _this.getChart();
           });
+
           break;
         case "俄罗斯":
-          _this.$refs.russia.style.color = 'orange'
-          _this.$refs.china.style.color = 'white'
-          _this.$refs.england.style.color = 'white'
-          _this.$refs.french.style.color = 'white'
-          _this.$refs.american.style.color = 'white'
-          d3.csv("./俄罗斯城镇人口占总人口比例.csv", function(data) {
+          _this.$refs.russia.style.color = "orange";
+          _this.$refs.china.style.color = "white";
+          _this.$refs.england.style.color = "white";
+          _this.$refs.french.style.color = "white";
+          _this.$refs.american.style.color = "white";
+          d3.csv("./俄罗斯总储备（包括黄金，按现值美元计）.csv", function(
+                  data
+          ) {
             return data;
           }).then(function(data) {
             _this.yjsNums = data;
-            _this.charTitle = "俄罗斯城市人口占总人口比例";
+            _this.charTitle = "俄国总储备（包括黄金按现值美元计）";
             _this.getChart();
           });
+
           break;
         case "英国":
-          _this.$refs.england.style.color = 'orange'
-          _this.$refs.russia.style.color = 'white'
-          _this.$refs.china.style.color = 'white'
-          _this.$refs.french.style.color = 'white'
-          _this.$refs.american.style.color = 'white'
-          d3.csv("./英国城镇人口占总人口比例.csv", function(data) {
+          _this.$refs.england.style.color = "orange";
+          _this.$refs.russia.style.color = "white";
+          _this.$refs.china.style.color = "white";
+          _this.$refs.french.style.color = "white";
+          _this.$refs.american.style.color = "white";
+          d3.csv("./英国总储备（包括黄金，按现值美元计）.csv", function(data) {
             return data;
           }).then(function(data) {
             _this.yjsNums = data;
-            _this.charTitle = "英国城市人口占总人口比例";
+            _this.charTitle = "英国总储备（包括黄金按现值美元计）";
             _this.getChart();
           });
+
           break;
         case "法国":
-          _this.$refs.french.style.color = 'orange'
-          _this.$refs.russia.style.color = 'white'
-          _this.$refs.china.style.color = 'white'
-          _this.$refs.england.style.color = 'white'
-          _this.$refs.american.style.color = 'white'
-          d3.csv("./法国城镇人口占总人口比例.csv", function(data) {
+          _this.$refs.french.style.color = "orange";
+          _this.$refs.russia.style.color = "white";
+          _this.$refs.china.style.color = "white";
+          _this.$refs.england.style.color = "white";
+          _this.$refs.american.style.color = "white";
+          d3.csv("./法国总储备（包括黄金，按现值美元计）.csv", function(data) {
             return data;
           }).then(function(data) {
             _this.yjsNums = data;
-            _this.charTitle = "法国城市人口占总人口比例";
+            _this.charTitle = "法国总储备（包括黄金按现值美元计）";
             _this.getChart();
           });
+
           break;
         case "美国":
-          _this.$refs.american.style.color = 'orange'
-          _this.$refs.russia.style.color = 'white'
-          _this.$refs.china.style.color = 'white'
-          _this.$refs.french.style.color = 'white'
-          _this.$refs.england.style.color = 'white'
-          d3.csv("./美国城镇人口占总人口比例.csv", function(data) {
+          _this.$refs.american.style.color = "orange";
+          _this.$refs.russia.style.color = "white";
+          _this.$refs.china.style.color = "white";
+          _this.$refs.french.style.color = "white";
+          _this.$refs.england.style.color = "white";
+          d3.csv("./美国总储备（包括黄金，按现值美元计）.csv", function(data) {
             return data;
           }).then(function(data) {
             _this.yjsNums = data;
-            _this.charTitle = "美国城市人口占总人口比例";
+            _this.charTitle = "美国总储备（包括黄金按现值美元计）";
             _this.getChart();
           });
+
           break;
       }
     },
     getChart() {
       let _this = this;
-      let yjsNums3 = _this.yjsNums.map(function(ele){ 
-              let obj={
-                '2007':Number(ele['2007']).toFixed(3),
-                '2008':Number(ele['2008']).toFixed(3),
-                '2009':Number(ele['2009']).toFixed(3),
-                '2010':Number(ele['2010']).toFixed(3),
-                '2011':Number(ele['2011']).toFixed(3),
-                '2012':Number(ele['2012']).toFixed(3),
-                '2013':Number(ele['2013']).toFixed(3),
-                '2014':Number(ele['2014']).toFixed(3),
-                '2015':Number(ele['2015']).toFixed(3),
-                '2016':Number(ele['2016']).toFixed(3),
-                '2017':Number(ele['2017']).toFixed(3),
-                '2018':Number(ele['2018']).toFixed(3),
-              }
-              return obj
-            })
-            _this.yjsNums3 = yjsNums3
+
+      let yjsNums3 = _this.yjsNums.map(function(ele) {
+        let obj = {
+          "2007": (Number(ele["2007"]) / 1000000000).toFixed(2), //亿
+          "2008": (Number(ele["2008"]) / 1000000000).toFixed(2),
+          "2009": (Number(ele["2009"]) / 1000000000).toFixed(2),
+          "2010": (Number(ele["2010"]) / 1000000000).toFixed(2),
+          "2011": (Number(ele["2011"]) / 1000000000).toFixed(2),
+          "2012": (Number(ele["2012"]) / 1000000000).toFixed(2),
+          "2013": (Number(ele["2013"]) / 1000000000).toFixed(2),
+          "2014": (Number(ele["2014"]) / 1000000000).toFixed(2),
+          "2015": (Number(ele["2015"]) / 1000000000).toFixed(2),
+          "2016": (Number(ele["2016"]) / 1000000000).toFixed(2),
+          "2017": (Number(ele["2017"]) / 1000000000).toFixed(2),
+          "2018": (Number(ele["2018"]) / 1000000000).toFixed(2)
+        };
+        return obj;
+      });
+      console.log("大于9999");
+      console.log(yjsNums3);
+      _this.yjsNums3 = yjsNums3;
       _this.item0 = _this.yjsNums[0].国家;
-      let itemValue0 = _this.yjsNums[0];
+      let itemValue0 = _this.yjsNums3[0];
       let oneOfLine0 = [];
       let oneOfLineToFixed0 = [];
       _this.lineTableData = []; // 数据处理成表格
@@ -269,7 +279,9 @@ export default {
       oneOfLine0.forEach(element => {
         oneOfLineToFixed0.push(Number(element).toFixed(0));
       });
-      var dataChart = this.$echarts.init(document.getElementById("data-chart"));
+      var dataChart = this.$echarts.init(
+              document.getElementById("data-chart")
+      );
       let gmzsrArr = oneOfLineToFixed0;
       let option = (option = {
         title: {
@@ -334,9 +346,11 @@ export default {
         yAxis: {
           show: true,
           type: "value",
-          name: "占比",
+          // name: "占比",
+          name: "美元",
           axisLabel: {
-            formatter: "{value}%"
+            // formatter: "{value}%"
+            formatter: "{value}亿"
           },
           axisLine: {
             lineStyle: {
@@ -360,7 +374,7 @@ export default {
             stack: "总量",
             // 显示数值
             itemStyle: { normal: { label: { show: true } } },
-            barWidth: '20',
+            barWidth: "15",
             data: gmzsrArr,
             color: "orange"
             // leaves: {
@@ -374,6 +388,7 @@ export default {
         ]
       });
       dataChart.setOption(option);
+
     },
     getRequest() {
       let url = window.location.search; //获取url中"?"符后的字串
@@ -405,7 +420,7 @@ export default {
 }
 
 .chart-title div {
-  width: 260px;
+  width: 323px;
   margin-top: 15px;
   padding-top: 15px;
   padding-bottom: 15px;
