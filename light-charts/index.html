@@ -14,7 +14,7 @@
     <div class="hello">
         <div class="chart-title">
             <div>
-                <h3><span id="charTitle" class="charTitle chart-title"></span><span class="chart-title">商品出口（现价美元）</span></h3>
+                <h3><span id="charTitle" class="charTitle chart-title"></span><span class="chart-title">税收占国民生产总值GDP</span></h3>
             </div>
         </div>
         <div class="box-data-chart">
@@ -23,7 +23,7 @@
         <div class="country-select">
             <ul class="select-opion" id="list">
                 <li id="china" class="select-option">中国</li>
-                <li id="els" class="select-option">俄罗斯</li>
+                <li id="els" class="select-option">日本</li>
                 <li id="eng" class="select-option">英国</li>
                 <li id="french" class="select-option">法国</li>
                 <li id="american" class="select-option">美国</li>
@@ -92,7 +92,6 @@
     <!-- <script src='js/jquery-3.2.1.min.js'></script> -->
     <script src="https://cdn.bootcss.com/echarts/4.3.0-rc.2/echarts-en.common.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <!-- <script src="https://cdn.bootcss.com/bootstrap-table/1.15.4/bootstrap-table-locale-all.min.js"></script> -->
     <script>
         var arrCounrtyData = []
         var country = ''
@@ -101,6 +100,7 @@
         let oneOfLineToFixed0 = []; //柱子上取整
         let oneOfLine0 = []; //
         window.onload = function() {
+            // switchData('中国')
             switchData('中国')
         }
         $(document).ready(function(key) {
@@ -123,46 +123,48 @@
         function switchData(key) {
             switch (key) {
                 case "中国":
-                    arrCounrtyData = [1220000000000.00, 1430000000000.00, 1200000000000.00, 1580000000000.00, 1900000000000.00, 2050000000000.00, 2210000000000.00, 2340000000000.00, 2270000000000.00, 2100000000000.00, 2260000000000.00, 2490000000000.00]
+                    arrCounrtyData = [9.771406923, 10.10142693, 10.30944303, 10.21204751, 10.31279448, 9.907733077, 9.713067852, 9.416086828, 9.20099957]
+
                     getChart()
                     break;
-                case "俄罗斯":
-                    arrCounrtyData = [354000000000.00, 472000000000.00, 303000000000.00, 401000000000.00, 522000000000.00, 529000000000.00, 522000000000.00, 497000000000.00, 341000000000.00, 282000000000.00, 354000000000.00, 444000000000.00]
+                case "日本":
+                    arrCounrtyData = [10.10618629, 8.931591654, 8.36891038, 8.809784435, 9.356818207, 9.682412944, 10.36061765, 11.46920658, 11.42357202, 11.15496587, 11.64194651]
+
                     getChart()
                     break;
                 case "英国":
-                    arrCounrtyData = [442000000000.00, 472000000000.00, 355000000000.00, 416000000000.00, 507000000000.00, 473000000000.00, 541000000000.00, 505000000000.00, 460000000000.00, 409000000000.00, 441000000000.00, 486000000000.00]
+                    arrCounrtyData = [25.83340794, 26.42037326, 24.1084352, 25.37144103, 25.8601462, 25.11866914, 25.11299591, 24.83523514, 25.09121291, 25.47717113, 25.71953266]
+
                     getChart()
                     break;
                 case "法国":
-                    arrCounrtyData = [560000000000.00, 616000000000.00, 485000000000.00, 524000000000.00, 596000000000.00, 569000000000.00, 581000000000.00, 581000000000.00, 506000000000.00, 501000000000.00, 535000000000.00, 582000000000.00]
+                    arrCounrtyData = [22.26269213, 22.14848573, 20.83089327, 22.08943166, 21.95942516, 22.68250157, 23.36867422, 23.31789754, 23.36046782, 23.20483732, 23.80610031]
+
                     getChart()
                     break;
                 case "美国":
-                    arrCounrtyData = [1150000000000.00, 1290000000000.00, 1060000000000.00, 1280000000000.00, 1480000000000.00, 1550000000000.00, 1580000000000.00, 1620000000000.00, 1500000000000.00, 1450000000000.00, 1550000000000.00, 1660000000000.00]
+                    arrCounrtyData = [11.30719612, 10.31615636, 7.919615919, 8.595887591, 9.573699439, 9.79687152, 10.51960599, 10.95153383, 11.2046032, 10.98294396, 11.94741055]
+
                     getChart()
                     break;
+
             }
         }
 
         function getChart() {
-            // 构造表格
+            // // 构造表格
             var tabledata = []
             arrCounrtyData.forEach(element => {
-                tabledata.push((Number(element) / 10000000000).toFixed(2));
+                tabledata.push((Number(element)).toFixed(2));
             });
             var tableValue = document.getElementsByClassName('table-value')
-            console.log(tableValue)
             for (var i = 0, len = tabledata.length; i < len; i++) {
                 tableValue[i].innerHTML = tabledata[i]
             }
-
             // 为了柱状图显示不重叠，去掉小数点后位数
             arrCounrtyData.forEach(element => {
-                oneOfLineToFixed0.push((Number(element) / 10000000000).toFixed(0));
+                oneOfLineToFixed0.push((Number(element)).toFixed(0));
             });
-            console.log('第二次加载，将第一次加载柱状图中的元素清空')
-            console.log(oneOfLineToFixed0)
             var dataChart = echarts.init(document.getElementById("data-chart"));
             let option = {
                 title: {
@@ -207,10 +209,10 @@
                 yAxis: {
                     show: true,
                     type: "value",
-                    // name: "公里",
-                    name: "美元",
+                    name: "占比",
+                    // name: "人",
                     axisLabel: {
-                        formatter: "{value}十亿"
+                        formatter: "{value}%"
                     },
                     axisLine: {
                         lineStyle: {
@@ -242,13 +244,6 @@
                     barWidth: '15',
                     data: oneOfLineToFixed0,
                     color: "orange"
-                        // leaves: {
-                        //     label: {
-                        //       normal: {
-                        //         rotate: -65,
-                        //       }
-                        //     }
-                        //   },
                 }]
             };
             dataChart.setOption(option);
